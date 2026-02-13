@@ -91,53 +91,59 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
             SliverAppBar(
               floating: true,
               snap: true,
-              expandedHeight: _isSearching ? 130 : 80,
+              expandedHeight: _isSearching ? 130 : 100, // 少し高さを確保
               flexibleSpace: FlexibleSpaceBar(
-                background: Container(
-                  padding: const EdgeInsets.fromLTRB(20, 40, 20, 12),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          const Text(
-                            '📚 なろうリーダー',
-                            style: TextStyle(
-                              fontSize: 24,
-                              fontWeight: FontWeight.w800,
-                              letterSpacing: -0.5,
+                background: SafeArea(
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8), // Paddingを整理
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center, // 中央寄せ
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            const Text(
+                              '📚 なろうリーダー',
+                              style: TextStyle(
+                                fontSize: 24,
+                                fontWeight: FontWeight.w800,
+                                letterSpacing: -0.5,
+                              ),
                             ),
-                          ),
-                          const Spacer(),
-                          IconButton(
-                            icon: Icon(_isSearching ? Icons.close : Icons.search),
-                            onPressed: () {
-                              setState(() {
-                                _isSearching = !_isSearching;
-                                if (!_isSearching) {
-                                  _searchController.clear();
-                                  library.setSearch('');
-                                }
-                              });
-                            },
-                          ),
-                        ],
-                      ),
-                      if (_isSearching)
-                        Padding(
-                          padding: const EdgeInsets.only(top: 8),
-                          child: TextField(
-                            controller: _searchController,
-                            autofocus: true,
-                            decoration: const InputDecoration(
-                              hintText: 'タイトル・作者・タグで検索...',
-                              prefixIcon: Icon(Icons.search, size: 20),
-                              isDense: true,
+                            const Spacer(),
+                            IconButton(
+                              icon: Icon(_isSearching ? Icons.close : Icons.search),
+                              onPressed: () {
+                                setState(() {
+                                  _isSearching = !_isSearching;
+                                  if (!_isSearching) {
+                                    _searchController.clear();
+                                    library.setSearch('');
+                                  }
+                                });
+                              },
                             ),
-                            onChanged: (q) => library.setSearch(q),
-                          ),
+                          ],
                         ),
-                    ],
+                        if (_isSearching)
+                          Padding(
+                            padding: const EdgeInsets.only(top: 8),
+                            child: SizedBox(
+                              height: 44,
+                              child: TextField(
+                                controller: _searchController,
+                                autofocus: true,
+                                decoration: const InputDecoration(
+                                  hintText: 'タイトル・作者・タグで検索...',
+                                  prefixIcon: Icon(Icons.search, size: 20),
+                                  isDense: true,
+                                ),
+                                onChanged: (q) => library.setSearch(q),
+                              ),
+                            ),
+                          ),
+                      ],
+                    ),
                   ),
                 ),
               ),
