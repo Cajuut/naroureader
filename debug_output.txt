@@ -1,0 +1,20 @@
+Fetching https://ncode.syosetu.com/n9669bk/...
+Found 100 episodes on page 1.
+
+Looking for next page link...
+Selector ".c-pager__item--next a": found 0 elements
+Selector ".pager_next a": found 0 elements
+Selector "a.next_link": found 0 elements
+Selector "span.pager a": found 0 elements
+Selector "div.pager_relative a": found 0 elements
+
+Pager HTML:
+<div class="c-pager">
+<div class="c-pager__pager">
+<span class="c-pager__item c-pager__item--first">最初へ</span>
+<span class="c-pager__item c-pager__item--before">前へ</span>
+<a href="/n9669bk/?p=2" class="c-pager__item c-pager__item--next">次へ</a>
+<a href="/n9669bk/?p=3" class="c-pager__item c-pager__item--last">最後へ</a>
+</div><!--c-pager__pager-->
+<div class="c-pager__result-stats">エピソード&nbsp;1&nbsp;～&nbsp;100&nbsp;を表示中</div>
+</div>
